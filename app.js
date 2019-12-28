@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const puppeteer = require('puppeteer');
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 const validUrl = require('valid-url');
 
 var parseUrl = function(url) {
