@@ -6,8 +6,8 @@ const puppeteer = require('puppeteer');
 exports.payment_create_post = [
 
     // Validate fields.
-        // body('example').isLength({ min: 1 }).trim().withMessage('example empty.')
-        // .isAlpha().withMessage('example must be alphabet letter'),
+    // body('example').isLength({ min: 1 }).trim().withMessage('example empty.')
+    // .isAlpha().withMessage('example must be alphabet letter'),
 
     body('token', 'token must not be empty.').isLength({ min: 1 }).trim(),
     body('ref', 'ref must not be empty.').isLength({ min: 1 }).trim(),
@@ -103,7 +103,7 @@ exports.payment_create_post = [
                     console.log(resp2);
 
                     console.log("Begin");
-                    /*await page.waitForSelector('#leModal',{ visible: true });
+                    await page.waitForSelector('#leModal',{ visible: true });
                     const button = await page.waitForSelector('#btnConnexion', { visible: true });
                     await button.click();
                     console.log("--------------------- click first");
@@ -139,7 +139,7 @@ exports.payment_create_post = [
                     }else{
                     console.log("Echec de la transaction.");        // panel_erreur
                     }
-                    console.log("End");*/
+                    console.log("End");
                     console.log("--------------------- End");
                 }catch(e){
                     console.log(e);
