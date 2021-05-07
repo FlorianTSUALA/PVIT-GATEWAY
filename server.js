@@ -18,10 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.post('/', function(req, res) {
     
-        body('token', 'token must not be empty.').isLength({ min: 1 }).trim();
+        body('operateur', 'token must not be empty.').isLength({ min: 1 }).trim();
+        body('service', 'ref must not be empty.').isLength({ min: 1 }).trim();
         body('ref', 'ref must not be empty.').isLength({ min: 1 }).trim();
-        body('montant', 'montant must not be empty.').isLength({ min: 1 }).trim();
-        body('tel_marchand', 'tel_marchand must not be empty.').isLength({ min: 1 }).trim();
+        body('montant', 'ref must not be empty.').isLength({ min: 1 }).trim();
+        body('token', 'ref must not be empty.').isLength({ min: 1 }).trim();
+        body('tel_marchand', 'montant must not be empty.').isLength({ min: 1 }).trim();
+        body('action', 'tel_marchand must not be empty.').isLength({ min: 1 }).trim();
         body('tel_client', 'tel_client must not be empty.').isLength({ min: 1 }).trim();
         body('redirect', 'redirect must not be empty').isLength({ min: 1 }).trim();
     
@@ -44,21 +47,23 @@ app.post('/', function(req, res) {
         //     +'<meta http-equiv="X-UA-Compatible" content="ie=edge">'+
         // +'</head>'+
         // +'<body>'+
-        var html = "<form id='form' method='POST' action='https://mypvit.com/airtelmoneypvit.kk'> <input type='text' id='ref' name='ref' value='";
-                    html += req.body.ref;
-                    html += "'> <input type='text' id='_token' name='_token' value='";
-                    html += req.body.token;
-                    html += "'  > <input type='text' id='token' name='token' value='";
-                    html += req.body.token;
-                    html += "' /> <input type='text' id='tel_marchand' name='tel_marchand' value='";
-                    html += req.body.tel_marchand;
-                    html += "'> <input type='text' id='montant' name='montant' value='";
-                    html += req.body.montant;
-                    html += "'> <input type='text' id='redirect' name='redirect' value='";
-                    html += req.body.redirect;
-                    html +="'> <input value='Go' id='go'  type='submit'/> </form>";
+        let url = "https://mypvit.com/pvit-secure-full-api.kk";
+        // let tel = "077016559";
+        // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.QUVSZ0FHaUZ6YUU5MFRteTRYMHFNNTdtL3paYzBxQXhLMmdJZGkzb2V1NVB2RHVqOUFSdzRNam11b0pWY3V1SGl3RHA3ZUkwaGUyaWw0UDZENHluQzZEcnhQRzFaRmJlT2VjeEFjZERJMklGMTlsa1lFMmlIZ1NkeTEzZ2FLNGx4SWxuanU5eC9LWGRGWVJkNWg2QTd5VmluSVdrYjBubUZzcGhvR1NoWVh2WVZpNzhjdE5RMEFrRmtra0FMbVZOOjpyWnNFYWZaR2NwNkdtMXF4YUNwYXZBPT0=.CCUTEQZDOCdWARVYVfBWceG1sssoPwgBuGwIlh5h6A8=";
 
-        console.log('PVIT process ');
+        var html = "<form id='form' method='POST' action='"+url+"'>";
+            html += " <input type='text' id='operateur' name='operateur' value='"+ req.body.operateur + "'>";
+            html += " <input type='text' id='service' name='service' value='"+ req.body.service + "'>";
+            html += " <input type='text' id='ref' name='ref' value='"+ req.body.ref + "'>";
+            html += " <input type='text' id='montant' name='montant' value='"+ req.body.montant + "'>";
+            html += " <input type='text' id='token' name='token' value='"+ req.body.token + "'>";
+            html += " <input type='text' id='tel_marchand' name='tel_marchand' value='"+ req.body.tel_marchand + "'>";
+            html += " <input type='text' id='action' name='action' value='"+ req.body.action + "'>";
+            html += " <input type='text' id='tel_client' name='tel_client' value='"+ req.body.tel_client + "'>";
+            html += " <input type='text' id='redirect' name='redirect' value='"+ req.body.redirect + "'>";
+            html +="<input value='Go' id='go'  type='submit'/> </form>";
+
+            console.log('PVIT process ');
 
             var num_transac = "unkwon";
 
